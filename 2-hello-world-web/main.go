@@ -3,33 +3,43 @@ package main
 import "log"
 
 func main() {
-	cat := "cat"
-
-	if cat == "cat" {
-		log.Println("cat is cat")
-	} else {
-		log.Println("cat is not cat")
+	for i := 0; i <= 10; i++ {
+		log.Println(i)
 	}
 
-	myNum := 100
-	isTue := false
+	animals := []string{"dog", "cat", "fist", "snake", "cow"}
 
-	if myNum > 99 && isTue {
-		log.Println("myNum is greater than 99 and isTrue is True")
-	} else if myNum > 99 && !isTue {
-		log.Println("myNum is greater than 99 and isTrue is False")
+	for i, animals := range animals {
+		log.Println(i, animals)
 	}
 
-	myCat := "cat"
+	for _, animals := range animals {
+		log.Println(animals)
+	}
 
-	switch myCat {
-	case "cat":
-		log.Println("myCat is cat")
-	case "dog":
-		log.Println("myCat is dog")
-	case "fish":
-		log.Println("myCat is fish")
-	default:
-		log.Println("myCat is something else")
+	animals1 := make(map[string]string)
+
+	animals1["dog"] = "Fido"
+	animals1["cat"] = "Fluffy"
+
+	for animalType, animalName := range animals1 {
+		log.Println(animalType, animalName)
+	}
+
+	type User struct {
+		FirstName string
+		LastName  string
+		Email     string
+		Age       int
+	}
+
+	var users []User
+	users = append(users, User{"Ko Zin", "Thet", "zin@gmail.com", 20})
+	users = append(users, User{"Mg", "Mg", "mg@gmail.com", 23})
+	users = append(users, User{"Hla", "Hla", "hla@gmail.com", 24})
+	users = append(users, User{"Mya", "Mya", "mya@gmail.com", 21})
+
+	for _, u := range users {
+		log.Println(u.FirstName, u.LastName, u.Email, u.Age)
 	}
 }
