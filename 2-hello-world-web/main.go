@@ -2,24 +2,34 @@ package main
 
 import "log"
 
-type User struct {
-	FirstName string
-	LastName  string
-}
-
 func main() {
-	myMap := make(map[string]User)
+	cat := "cat"
 
-	me := User{
-		FirstName: "Ko Zin",
-		LastName:  "Thet",
+	if cat == "cat" {
+		log.Println("cat is cat")
+	} else {
+		log.Println("cat is not cat")
 	}
 
-	myMap["me"] = me
+	myNum := 100
+	isTue := false
 
-	log.Println(myMap["me"].FirstName, myMap["me"].LastName)
+	if myNum > 99 && isTue {
+		log.Println("myNum is greater than 99 and isTrue is True")
+	} else if myNum > 99 && !isTue {
+		log.Println("myNum is greater than 99 and isTrue is False")
+	}
 
-	name := []string{"one", "two", "three"}
+	myCat := "cat"
 
-	log.Println(name)
+	switch myCat {
+	case "cat":
+		log.Println("myCat is cat")
+	case "dog":
+		log.Println("myCat is dog")
+	case "fish":
+		log.Println("myCat is fish")
+	default:
+		log.Println("myCat is something else")
+	}
 }
