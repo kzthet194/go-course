@@ -1,56 +1,18 @@
 package main
 
-import "fmt"
-
-type Animal interface {
-	Says() string
-	NumberOfLegs() int
-}
-
-type Dog struct {
-	Name  string
-	Breed string
-}
-
-type Gorilla struct {
-	Name          string
-	Color         string
-	NumberOfTeeth int
-}
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
-	dog := Dog{
-		Name:  "Samson",
-		Breed: "German Shepherd",
-	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		n, err := fmt.Fprintf(w, "Hello, World!")
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(fmt.Sprintf("Number of byes written: %d", n))
+	})
 
-	PrintInfo(&dog)
-
-	gorilla := Gorilla{
-		Name:          "Jock",
-		Color:         "grey",
-		NumberOfTeeth: 38,
-	}
-
-	PrintInfo(&gorilla)
-}
-
-func PrintInfo(a Animal) {
-	fmt.Println("This animal says", a.Says(), "and has", a.NumberOfLegs(), "legs")
-}
-
-func (d *Dog) Says() string {
-	return "Woof"
-}
-
-func (d *Dog) NumberOfLegs() int {
-	return 4
-}
-
-func (g *Gorilla) Says() string {
-	return "Ugh"
-}
-
-func (g *Gorilla) NumberOfLegs() int {
-	return 2
+	_ = http.ListenAndServe(":8080", nil)
 }
