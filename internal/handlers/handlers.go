@@ -3,9 +3,9 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/kzthet194/go-course/pkg/config"
-	"github.com/kzthet194/go-course/pkg/models"
-	"github.com/kzthet194/go-course/pkg/render"
+	"github.com/kzthet194/go-course/internal/config"
+	"github.com/kzthet194/go-course/internal/models"
+	"github.com/kzthet194/go-course/internal/render"
 	"log"
 	"net/http"
 )
